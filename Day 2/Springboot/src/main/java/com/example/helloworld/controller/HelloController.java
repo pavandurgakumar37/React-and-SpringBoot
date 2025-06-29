@@ -3,6 +3,7 @@ package com.example.helloworld.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.helloworld.model.MessageResponse;
@@ -18,5 +19,10 @@ public class HelloController {
     @GetMapping("/message")
     public MessageResponse sayHello() {
         return helloService.getGreeting();
+    }
+
+    @GetMapping("/message/{name}")
+    public MessageResponse sayHelloToUser(@PathVariable String name) {
+        return helloService.getPersonalGreeting(name);
     }
 }
